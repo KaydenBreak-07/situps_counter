@@ -1,0 +1,90 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Sit-Up Counter</title>
+    <link rel="stylesheet" href="{{ url_for('static', filename='style.css') }}">
+</head>
+<body>
+    <div class="container">
+        <h1>Sit-Up Counter</h1>
+        <p>Upload a video to analyze sit-ups with real-time feedback</p>
+        
+        <div class="upload-section">
+            <input type="file" id="videoUpload" accept="video/*">
+            <button id="uploadBtn">Upload Video</button>
+        </div>
+        
+        <div class="controls">
+            <button id="processBtn" disabled>Start Analysis</button>
+            <button id="stopBtn" disabled>Stop Analysis</button>
+        </div>
+        
+        <div class="results">
+            <h2>Real-Time Analysis</h2>
+            <div class="video-container">
+                <canvas id="videoCanvas"></canvas>
+            </div>
+            
+            <div class="stats">
+                <div class="stat">
+                    <span class="label">Correct:</span>
+                    <span id="correctCount" class="value">0</span>
+                </div>
+                <div class="stat">
+                    <span class="label">Incorrect:</span>
+                    <span id="incorrectCount" class="value">0</span>
+                </div>
+                <div class="stat">
+                    <span class="label">Total:</span>
+                    <span id="totalCount" class="value">0</span>
+                </div>
+                <div class="stat">
+                    <span class="label">Accuracy:</span>
+                    <span id="accuracy" class="value">0%</span>
+                </div>
+                <div class="stat">
+                    <span class="label">Torso Angle:</span>
+                    <span id="angle" class="value">0°</span>
+                </div>
+                <div class="stat">
+                    <span class="label">Feedback:</span>
+                    <span id="feedback" class="value">Waiting to start...</span>
+                </div>
+                <div class="stat">
+                    <span class="label">Debug:</span>
+                    <span id="debugInfo" class="value">Waiting...</span>
+                </div>
+                <div class="stat">
+                    <span class="label">State:</span>
+                    <span id="stateInfo" class="value">-</span>
+                </div>
+                <div class="stat">
+                    <span class="label">Missing Points:</span>
+                    <span id="missingPoints" class="value">-</span>
+                </div>
+            </div>
+            
+            <div class="progress">
+                <div class="progress-bar">
+                    <div id="progressFill" class="progress-fill"></div>
+                </div>
+                <span id="progressText">0%</span>
+            </div>
+        </div>
+        
+        <div id="finalResults" class="final-results" style="display: none;">
+            <h2>Final Results</h2>
+            <div class="final-stats">
+                <p>Correct Sit-ups: <span id="finalCorrect">0</span></p>
+                <p>Incorrect Sit-ups: <span id="finalIncorrect">0</span></p>
+                <p>Total Sit-ups: <span id="finalTotal">0</span></p>
+                <p>Accuracy: <span id="finalAccuracy">0%</span></p>
+            </div>
+        </div>
+    </div>
+
+    <script src="{{ url_for('static', filename='script.js') }}"></script>
+</body>
+</html>
